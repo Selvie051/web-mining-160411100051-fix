@@ -36,7 +36,7 @@
     
     
       
-        <title>Home - Web Mining 2019</title>
+        <title>Pagerank - Web Mining 2019</title>
       
     
     
@@ -133,7 +133,7 @@
               Web Mining 2019
             </span>
             <span class="md-header-nav__topic">
-              Home
+              Pagerank
             </span>
           
         </div>
@@ -212,8 +212,8 @@
   
     <li class="md-tabs__item">
       
-        <a href="./" title="Page Rank" class="md-tabs__link md-tabs__link--active">
-          Page Rank
+        <a href="../Webstructuremining/" title="Web Structure Mining" class="md-tabs__link md-tabs__link--active">
+          Web Structure Mining
         </a>
       
     </li>
@@ -399,14 +399,26 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
-      Page Rank
+      Web Structure Mining
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-3">
-        Page Rank
+        Web Structure Mining
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Webstructuremining/" title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
         
           
           
@@ -421,11 +433,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Home
+        Pagerank
       </label>
     
-    <a href="./" title="Home" class="md-nav__link md-nav__link--active">
-      Home
+    <a href="./" title="Pagerank" class="md-nav__link md-nav__link--active">
+      Pagerank
     </a>
     
       
@@ -467,6 +479,20 @@
         <li class="md-nav__item">
   <a href="#kalkulasi-pagerank" title="Kalkulasi pagerank" class="md-nav__link">
     Kalkulasi pagerank
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-perhitungan-pagerank" title="Code Perhitungan Pagerank :" class="md-nav__link">
+    Code Perhitungan Pagerank :
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graph" title="Graph" class="md-nav__link">
+    Graph
   </a>
   
 </li>
@@ -552,6 +578,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#code-perhitungan-pagerank" title="Code Perhitungan Pagerank :" class="md-nav__link">
+    Code Perhitungan Pagerank :
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graph" title="Graph" class="md-nav__link">
+    Graph
+  </a>
+  
+</li>
+      
       
       
       
@@ -569,7 +609,7 @@
               
                 
                 
-                  <h1>Home</h1>
+                  <h1>Pagerank</h1>
                 
                 <h3 id="pengertian-pagerank">Pengertian <em>Pagerank</em><a class="headerlink" href="#pengertian-pagerank" title="Permanent link">&para;</a></h3>
 <p>Algoritma dari mesin telusur <em>google</em> yang mempunyai fungsi untuk menganalisis link dan memberikan nomor atau peringkat ke setiap halaman web yang ada di internet inilah yang disebut <em>pagerank</em>. <em>Pagerank</em> sebuah halaman web dihitung dari 0-10, semakin besar <em>pagerank</em> yang dimiliki sebuah halaman web maka semakin besar peluang untuk mendapatkan posisi paling atas pada hasil penelusuran <em>google</em>.</p>
@@ -727,6 +767,44 @@ $$
 <li>Untuk D : PR(D) = &#8531; hasilnya 0,33</li>
 </ul>
 <p>Jumlah <em>pagerank</em> website A, B, C dan D seharusnya sama dengan jumlah website 1,33 + 1,83 + 0,5 + 0,33 = 3,99. Kekurangan 0,1 disebabkan oleh adanya pembulatan. Dalam kalkulasi ini masih ada yang kurang. <em>Pagerank</em> setiap website tidak disertakan. Contoh berikutnya adalah website b. Apabila kalkulasi disesuaikan dengan <em>pagerank</em> yang didapat dari langkah pertama . PR(B) = ½ +&#8531; +1/1. Didapat term berikut : PR(B) = 1,33/2 + 0,5/3 +0,33/1 hasilnya adalah 1,62. Tentu saja kalkulasi baru <em>pagerank</em> website B mengubah <em>pagerank</em> website A, C dan D. Nilai baru website D kembali mengubah nilai website B.</p>
+<h3 id="code-perhitungan-pagerank">Code Perhitungan Pagerank :<a class="headerlink" href="#code-perhitungan-pagerank" title="Permanent link">&para;</a></h3>
+<p>Berikut ini merupakan code untuk menghitung pagerank :</p>
+<div class="codehilite"><pre><span></span>damping = 0.85
+max_iterr = 100
+error_toleransi = 0.01
+pr = nx.pagerank(g, alpha - damping, max_iter1=max_iterr, tol1=error_toleransi)
+</pre></div>
+
+<p>Pada penjelasan diatas telah dijabarkan bagaimana perhitungan manual pagerank. Sedangkan untuk code diatas merupakan perhitungan pagerank dengan library yang terdapat pada python yaitu networkx. Dalam networkx memiliki module pagerank yang memiliki parameter diatas yaitu g yang merupakan variabel yang nantinya menampung graph, alpha beridi nilai damping dengan default 0.85, max_iter untuk nilai maksimum iterasi yang diizinkan, terakhir yatu tol untuk menampung nilai minimal eror toleransi.</p>
+<p>Code untuk menampung hasil perhitungan ke dalam list :</p>
+<div class="codehilite"><pre><span></span>print(&quot;keterangan node:&quot;)
+nodelist = g.nodes
+label= {}
+data=[]
+for i, key in enumerate(nodelist):
+    data.append((pr[key], key))
+    label[key]=i
+</pre></div>
+
+<p>Langkah selanjutnya yaitu mengurutkan nilai pagerank. Code untuk mengurutkan pagerank adalah sebagai berikut :</p>
+<div class="codehilite"><pre><span></span>urut = data.copy()
+for x in range(len(urut)):
+    for y in range(len(urut)):
+        if urut[x][0] &gt; urut[y][0]:
+            urut[x], urut[y] = urut[y], urut[x]
+urut = pd.DataFrame(data, None, (&quot;Pagerank&quot;, &quot;Node&quot;))
+</pre></div>
+
+<h3 id="graph">Graph<a class="headerlink" href="#graph" title="Permanent link">&para;</a></h3>
+<p>Selanjutnya yaitu membentuk garph, graph disini berfungsi agar mendapatkan visualisasi yang lebih terstruktur dari hasil pagerank. Code membentuk graph :</p>
+<div class="codehilite"><pre><span></span>g = nx.from_pandas_edgelist(edgeListFrame, &quot;From&quot;, &quot;To&quot;, None, nx.DiGraph())
+pos = nx.spring_layout(g)
+plt.title(&#39;Link Graph&#39;)
+nx.draw(g, pos)
+nx.draw_networkx_labels(g, pos, label, font_color=&quot;w&quot;)
+plt.axis(&quot;off&quot;)
+plt.show()
+</pre></div>
                 
                   
                 
@@ -747,7 +825,7 @@ $$
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../Referensi/" title="Referensi" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../Webstructuremining/" title="Home" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -756,7 +834,7 @@ $$
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Referensi
+                Home
               </span>
             </div>
           </a>
